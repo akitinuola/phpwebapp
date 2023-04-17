@@ -36,7 +36,7 @@ Route::get('/login', [LoginController::class,"returnLoginpage"]);
 Route::get('/dashboard', function () {
     return view("portal.base");
 });
-
+//
 
 Route::get('/coaches', function () {
     return view("portal.coaches");
