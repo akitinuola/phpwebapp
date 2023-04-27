@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SquadController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\RegisterController;
@@ -23,20 +24,41 @@ Route::get('/home', function () {
     return view("home");
 
 });
-
-
-// Route::get('/first', [RegisterController]);
-
-Route::get('/register-user', [RegisterController::class,"returnRegisterPage"]);
+// Registration routes
+Route::get('/register', function () {
+    return view('portal.register');
+});
 Route::post('/register-user', [RegisterController::class,"registerUser"]);
 
+// Login route
 Route::get('/login', [LoginController::class,"returnLoginpage"]);
-// Route::post('/login', [LoginController::class,"login"]);
+ Route::post('/login-user', [LoginController::class,"login"]);
 
+
+
+// Dashboard routes
 Route::get('/dashboard', function () {
-    return view("portal.base");
+    return view("portal.dashboard");
 });
-//
+
+Route::get('/squads', [SquadController::class,"loadSquadPage"]);
+Route::get('/new-squad', [SquadController::class,"loadNewSquadPage"]);
+Route::post('/add-squad', [SquadController::class,"addSquad"]);
+
+Route::get('/edit-squad/{squadId}', [SquadController::class,"loadEditSquad"]);
+// the {id} is to allow the squad id to be passed in the url cause they are several id numbers like 1,2,3 
+// {id} means you are expecting a variable called id 
+Route::post('/update-squad/{squadId}', [SquadController::class,"updateSquad"]);
+Route::get('/delete-squad/{squadId}', [SquadController::class,"deleteSquad"]);
+
+
+Route::get('/swimmers', function () {
+    return view("portal.swimmers");
+});
+
+Route::get('/users', function () {
+    return view("portal.users");
+});
 
 Route::get('/coaches', function () {
     return view("portal.coaches");
