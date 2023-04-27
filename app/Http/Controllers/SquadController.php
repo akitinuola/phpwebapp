@@ -65,8 +65,11 @@ class SquadController extends Controller
         $getSquad = Squad::where('id', $squadId)->first();
 
         $getCoaches = User::where("role", 'coach')->get();
+#get is to collect all swimmers that belong to the squad
+        $getMembers = User::where("role", 'swimmer')->where('squadId', $squadId)->get();
+        
 
-        return view("portal.edit-squad", ['coaches' => $getCoaches, 'squadDetails' => $getSquad]);
+        return view("portal.edit-squad", ['coaches' => $getCoaches, 'squadDetails' => $getSquad, 'getMembers' => $getMembers]);
     }
 
     function updateSquad(Request $request, $squadId) {
@@ -104,5 +107,49 @@ class SquadController extends Controller
         $getSquad->delete();
 
         return redirect('/squads');
+    }
+
+    function loadNewSquadMemberPage($squadId) {
+        // the return view the  ['coaches' => $getCoaches] is to allow mw to pass data into the view
+        // allow me to access the database for different coaches that would show in the front end
+
+        $getSwimmers = User::where("role", 'swimmer')->get();
+#we  put the getswimmer and $squadid functon to dispay them both as the view
+        return view("portal.new-squad-member", ['swimmers' => $getSwimmers, 'squadId' => $squadId]);
+    }
+
+    function addSquadMember(Request $request, $squadId) {
+
+        $this->validate($request, [
+            "swimmerId" => "required",   
+        ]);
+
+        
+        $checksquad = Squad::where("id",$squadId)->first();
+
+        // != represents not equal to, so if i check squad and its not empty or filled with something, means it has been taken
+        if($checksquad == ""){
+            return Redirect::back()->withErrors(['msg'=> "squad does not exist"]);
+        }
+
+        $checkSwimmer = User::where('id', $request->swimmerId)->first();
+
+        $checkSwimmer->squadId = $squadId;
+        $checkSwimmer->save();
+
+        return redirect("/edit-squad/".$squadId);
+
+
+    }
+
+    function deleteSquadMember($squadMemberId) {
+        // the first means it should check the squad table in the database where id= the squad id in the url and pick the first information with that id
+        // the get means to get all the information, for instance it has found the first id and wpuld now get all information relating to it
+        $getSquadMember = User::where('id', $squadMemberId)->first();
+#we put null cause when we delete it theyre still in the club, this is to just remove them from a squad
+        $getSquadMember->squadId = null;
+        $getSquadMember->save();
+
+        return back();
     }
 }

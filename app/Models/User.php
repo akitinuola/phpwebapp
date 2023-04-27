@@ -32,6 +32,7 @@ class User extends Authenticatable
         'role',
         'dob',
         'username',
+        'squadId'
     ];
 
     /**

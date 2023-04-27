@@ -51,6 +51,10 @@ Route::get('/edit-squad/{squadId}', [SquadController::class,"loadEditSquad"]);
 Route::post('/update-squad/{squadId}', [SquadController::class,"updateSquad"]);
 Route::get('/delete-squad/{squadId}', [SquadController::class,"deleteSquad"]);
 
+#{squadId}, this is in a curly brace because we dont know the particular id its calling
+Route::get('/edit-squad/{squadId}/new-squad-member', [SquadController::class,"loadNewSquadMemberPage"]);
+Route::post('/add-squad-member/{squadId}', [SquadController::class,"addSquadMember"]);
+Route::get('/delete-squad-member/{squadMemberId}', [SquadController::class,"deleteSquadMember"]);
 
 Route::get('/swimmers', function () {
     return view("portal.swimmers");
