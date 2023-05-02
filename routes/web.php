@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SquadController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\RegisterController;
 
@@ -67,3 +68,12 @@ Route::get('/users', function () {
 Route::get('/coaches', function () {
     return view("portal.coaches");
 });
+
+
+Route::get('/training', [TrainingController::class,"loadTrainingPage"]);
+Route::get('/new-training', [TrainingController::class,"loadNewTrainingPage"]);
+Route::post('/add-training', [TrainingController::class,"addTraining"]);
+Route::get('/delete-training/{trainingId}', [TrainingController::class,"deleteTraining"]);
+
+Route::get('/edit-training/{trainingId}', [TrainingController::class,"loadEditTraining"]);
+Route::post('/update-training/{trainingId}', [TrainingController::class,"updateTraining"]);

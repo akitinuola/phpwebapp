@@ -149,7 +149,7 @@ class SquadController extends Controller
 #we put null cause when we delete it theyre still in the club, this is to just remove them from a squad
         $getSquadMember->squadId = null;
         $getSquadMember->save();
-
+#save is to save the changes youve done and back it to go back the changes made
         return back();
     }
 }

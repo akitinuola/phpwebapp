@@ -16,7 +16,7 @@ return new class extends Migration
             
             #this code below  is to call the squads in the squad table to link it to a record on the squad table
             #nullable is to show that not everyone belongs to a squad, so value can be null
-            $table->foreignId('squadId')->nullable()->constrained('squads')->cascadeOnDelete();
+            $table->foreignId('squadId')->nullable()->constrained('squads');
         });
 
     }
@@ -29,7 +29,7 @@ return new class extends Migration
         //
         Schema::table('users', function (Blueprint $table) {
             
-            $table->dropColumn('squadId');
+            // $table->dropColumn('squadId');
         });
     }
 };

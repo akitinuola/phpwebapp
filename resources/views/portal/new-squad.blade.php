@@ -1,6 +1,6 @@
 {{-- this extend is to carry the body of the dashboard,allow me to utilize template in base --}}
 @extends('portal.base') 
-
+<link href="{{url("scss/general.scss")}}" rel="stylesheet">
 
 @section('body')
 

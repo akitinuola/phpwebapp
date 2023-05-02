@@ -14,3 +14,12 @@ table td, th {
 table td {
     border-bottom: solid 1px rgb(230,230, 230);
 }
+
+form {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+}
+input, select {
+    margin-bottom: 10px !important;
+}
