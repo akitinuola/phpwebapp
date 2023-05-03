@@ -61,7 +61,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Squads</span></a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="/swimmers">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Swimmers</span></a>
@@ -70,7 +70,7 @@
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Gala</span></a>
-            </li>
+            </li> --}}
             <hr class="sidebar-divider">
 
             <li class="nav-item">
@@ -78,7 +78,11 @@
                     <i class="fas fa-fw fa-person-booth"></i>
                     <span>Training</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('training-performance')}}">
+                    <i class="fas fa-fw fa-person-booth"></i>
+                    <span>Training Performance</span></a>
+            </li>
             <hr class="sidebar-divider">
 
 

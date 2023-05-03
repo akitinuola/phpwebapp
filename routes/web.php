@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SquadController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\TrainingPerformanceController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\RegisterController;
 
@@ -77,3 +78,12 @@ Route::get('/delete-training/{trainingId}', [TrainingController::class,"deleteTr
 
 Route::get('/edit-training/{trainingId}', [TrainingController::class,"loadEditTraining"]);
 Route::post('/update-training/{trainingId}', [TrainingController::class,"updateTraining"]);
+
+
+Route::get('/training-performance', [TrainingPerformanceController::class,"loadTrainingPerformancePage"]);
+Route::get('/new-performance', [TrainingPerformanceController::class,"loadNewTrainingPerformancePage"]);
+Route::post('/add-training-performance', [TrainingPerformanceController::class,"addTrainingPerformance"]);
+
+Route::get('/edit-performance/{performanceId}', [TrainingPerformanceController::class,"loadEditPerformance"]);
+Route::post('/update-performance/{performanceId}', [TrainingPerformanceController::class,"updatePerformance"]);
+Route::get('/deletePerformance/{performanceId}', [TrainingPerformanceController::class,"deletePerformance"]);
