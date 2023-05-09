@@ -76,10 +76,10 @@ class RegisterController extends Controller
         
     }
 
-    function returnRegisterPage()
-    {
-        $users = User::all();
-        $users = User::all();
-        return view("register", compact("users"));
-    }
+//     function returnRegisterPage()
+//     {
+//         $users = User::all();
+//         $users = User::all();
+//         return view("register", compact("users"));
+//     }
 }

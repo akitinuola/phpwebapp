@@ -50,16 +50,23 @@
             {{-- this code  controls what you want to be accessed for instance
                 if th role is admin, swimmers would be show to only them --}}
             @if (session('role') == 'admin') 
-                <li class="nav-item">
-                    <a class="nav-link" href="/users">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Users</span></a>
-                </li>
+                
             @endif
+            <li class="nav-item">
+                <a class="nav-link" href="/users">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Users</span></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/squads">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Squads</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/swimmers">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Swimmers</span></a>
             </li>
             {{-- <li class="nav-item">
                 <a class="nav-link" href="/swimmers">
@@ -84,7 +91,11 @@
                     <span>Training Performance</span></a>
             </li>
             <hr class="sidebar-divider">
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('gala')}}">
+                    <i class="fas fa-fw fa-person-booth"></i>
+                    <span>Gala</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->

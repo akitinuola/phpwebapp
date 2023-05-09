@@ -5,7 +5,9 @@ use App\Http\Controllers\SquadController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingPerformanceController;
+use App\Http\Controllers\GalaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 // use App\Http\Controllers\RegisterController;
 
 /*
@@ -27,6 +29,8 @@ Route::get('/home', function () {
 
 });
 // Registration routes
+
+
 Route::get('/register', function () {
     return view('portal.register');
 });
@@ -62,9 +66,6 @@ Route::get('/swimmers', function () {
     return view("portal.swimmers");
 });
 
-Route::get('/users', function () {
-    return view("portal.users");
-});
 
 Route::get('/coaches', function () {
     return view("portal.coaches");
@@ -87,3 +88,28 @@ Route::post('/add-training-performance', [TrainingPerformanceController::class,"
 Route::get('/edit-performance/{performanceId}', [TrainingPerformanceController::class,"loadEditPerformance"]);
 Route::post('/update-performance/{performanceId}', [TrainingPerformanceController::class,"updatePerformance"]);
 Route::get('/deletePerformance/{performanceId}', [TrainingPerformanceController::class,"deletePerformance"]);
+
+
+Route::get('/gala', [GalaController::class,"loadGalaPage"]);
+
+
+Route::get('/new-gala', function () {
+    return view("portal.new-gala");
+    
+});
+
+Route::post('/add-gala', [GalaController::class,"addGala"]);
+Route::get('/edit-gala/{GalaId}', [GalaController::class,"loadEditGala"]);
+Route::post('/update-gala/{GalaId}', [GalaController::class,"updateGala"]);
+Route::get('/delete-gala/{GalaId}', [GalaController::class,"deleteGala"]);
+
+Route::get('/edit-gala/{GalaId}/new-gala-performance', [GalaController::class,"loadNewGalaPerformancePage"]);
+Route::post('/add-gala-performance/{GalaId}', [GalaController::class,"addGalaPerformance"]);
+
+Route::get('/edit-gala-performance/{GalaPerformanceId}', [GalaController::class,"loadEditGalaPerformance"]);
+Route::post('/update-gala-performance/{GalaPerformanceId}', [GalaController::class,"updateGalaPerformance"]);
+Route::get('/delete-gala-performance/{GalaPerformanceId}', [GalaController::class,"deleteGalaPerformance"]);
+
+
+Route::get('/users', [UserController::class,"loadUserPage"]);
+Route::get('/swimmers', [UserController::class,"loadSwimmerPage"]);
