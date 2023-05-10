@@ -6,7 +6,10 @@
 
     <a href="/gala">Go Back</a>
     <h1>{{ $GalaDetails->name }} </h1>
+
+    @if (session('role') == 'admin') 
     <p>Fill the form below to edit Gala </p>
+
     <form action="{{ url('update-gala', [$GalaDetails->id]) }}" method="post">
         @csrf
         @if (count($errors))
@@ -35,9 +38,13 @@
         <input type="submit" value="Edit">
     </form>
 
+@endif
+   
     {{-- <input type="text"> --}}
-
-    <a href="{{ $GalaDetails->id }}/new-gala-performance">Add new gala performance</a>
+    @if (session('role') == 'admin') 
+    <a href="{{ $GalaDetails->id }}/new-gala-performance">Add new gala performance</a> 
+@endif
+    
 
     <table>
         <thead>
@@ -64,9 +71,11 @@
                     <td>{{ $getGala->stroke }} </td>
                     <td>{{ $getGala->position }} </td>
 
-
+                    @if (session('role') == 'admin') 
                     <td><a href="/edit-gala-performance/{{ $getGala->id }}">Edit</a></td>
                     <td><a href="/delete-gala-performance/{{ $getGala->id }}" style="color:red">Delete</a></td>
+                @endif
+                    
                 </tr>
             @endforeach
 

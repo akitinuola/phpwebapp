@@ -23,3 +23,25 @@ form {
 input, select {
     margin-bottom: 10px !important;
 }
+.top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border-top: solid 1px rgb(230,230, 230);
+    border-bottom: solid 1px rgb(230,230, 230);
+    padding: 20px 0;
+}
+.summary-item {
+    width: 23%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.summary-item h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.summary-item p {
+    font-size: 30px;
+    font-weight: 700
+}

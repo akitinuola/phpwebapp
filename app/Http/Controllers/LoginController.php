@@ -30,6 +30,11 @@ class LoginController extends Controller
             );
     }
     function returnLoginpage() {
+        Session::remove('id');
+        Session::remove('email');
+        Session::remove('username');
+        Session::remove('role');
+        
         return view("Login");
     }
 
@@ -54,8 +59,9 @@ class LoginController extends Controller
         if(!Hash::check($request->password, $checkemail->password)){
             return Redirect::back()->withErrors (["incorrect password"]);
         }
-
+        Session::put('id',$checkemail->id);
         Session::put('email',$checkemail->email);
+        Session::put('username',$checkemail->username);
         Session::put('role',$checkemail->role);
         return redirect("/dashboard");
 

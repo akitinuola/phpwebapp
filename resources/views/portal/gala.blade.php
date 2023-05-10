@@ -7,7 +7,10 @@
 
     <h1>Gala</h1>
     <p>this is the Gala page</p>
+    @if (session('role') == 'admin') 
     <a href="/new-gala">Add new Gala page</a>
+    @endif
+    
     <br>
     <table>
         <thead>
@@ -31,8 +34,11 @@
                     <td>{{$getGala->time }} </td>
                    
                   
-                    <td><a href="/edit-gala/{{$getGala->id}}">Edit</a></td>
+                    <td><a href="/edit-gala/{{$getGala->id}}">View</a></td>
+                    @if (session('role') == 'admin') 
                     <td><a href="/delete-gala/{{$getGala->id}}" style="color:red">Delete</a></td>
+    @endif
+                   
                 </tr>
             @endforeach
             

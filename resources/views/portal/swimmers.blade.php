@@ -15,9 +15,9 @@
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Age</th>
-                <th>First-Place</th>
-                <th>Second-Place</th>
-                <th>Third-Place</th>
+                <th>No. of First-Place</th>
+                <th>No. of Second-Place</th>
+                <th>No. of Third-Place</th>
                 
             </tr>
         </thead>

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;  
 
 class RegisterController extends Controller
 {
@@ -49,6 +50,11 @@ class RegisterController extends Controller
             return Redirect::back()->withErrors(["number already exists"]);
         }
 
+        $checkAge = $this->getAge($request->dob);
+        if($checkAge < 18) {
+            return Redirect::back()->withErrors(["Contact your guardian to create your account"]);
+        }
+
         if($request->password!=$request->password_confirmation){
             return Redirect::back()->withErrors (["passwords dont match"]);
         }
@@ -68,12 +74,23 @@ class RegisterController extends Controller
         ]);
         $checkemail = User::where("email",$request->email)->first();
 
+        Session::put('id',$checkemail->id);
+        Session::put('username',$checkemail->username);
         Session::put('email',$checkemail->email);
         Session::put('role',$checkemail->role);
 
         return redirect("/dashboard"); #redirect changes the url wheraas view just loads the view and doesnt change the url
 
         
+    }
+
+    function getAge($dateOfBirth) {
+        $today = Carbon::parse('today');
+        $dob = Carbon::parse($dateOfBirth);
+
+        $age = $dob->diffInYears($today);
+
+        return $age;
     }
 
 //     function returnRegisterPage()

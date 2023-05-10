@@ -7,7 +7,10 @@
 
     <h1>Training Performance</h1>
     <p>this is the training performance page</p>
+    @if (session('role') == 'admin' || session('role') == 'coach') 
     <a href="/new-performance">Add new performance</a>
+    @endif
+   
     <br>
     <table>
         <thead>
@@ -33,8 +36,11 @@
                     <td>{{$getTrainingPerformance->stroke }} </td>
                     <td>{{$getTrainingPerformance->rank }} </td>
                     <td>{{$getTrainingPerformance->trainingDate }} </td>
+                    @if (session('role') == 'admin' || session('role') == 'coach') 
                     <td><a href="/edit-performance/{{$getTrainingPerformance->id}}">Edit</a></td>
-                    <td><a href="/deletePerformance/{{$getTrainingPerformance->id}}" style="color:red">Delete</a></td>
+                    <td><a href="/deletePerformance/{{$getTrainingPerformance->id}}" style="color:red">Delete</a></
+                    @endif
+                    td>
                 </tr>
             @endforeach
             

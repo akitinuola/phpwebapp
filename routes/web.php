@@ -8,6 +8,8 @@ use App\Http\Controllers\TrainingPerformanceController;
 use App\Http\Controllers\GalaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WardController;
+use App\Http\Controllers\DashboardController;
 // use App\Http\Controllers\RegisterController;
 
 /*
@@ -43,9 +45,7 @@ Route::get('/login', [LoginController::class,"returnLoginpage"]);
 
 
 // Dashboard routes
-Route::get('/dashboard', function () {
-    return view("portal.dashboard");
-});
+Route::get('/dashboard', [DashboardController::class,"loadDashboard"]);
 
 Route::get('/squads', [SquadController::class,"loadSquadPage"]);
 Route::get('/new-squad', [SquadController::class,"loadNewSquadPage"]);
@@ -113,3 +113,15 @@ Route::get('/delete-gala-performance/{GalaPerformanceId}', [GalaController::clas
 
 Route::get('/users', [UserController::class,"loadUserPage"]);
 Route::get('/swimmers', [UserController::class,"loadSwimmerPage"]);
+
+Route::get('/settings', [UserController::class,"loadSettings"]);
+Route::post('/update-settings/{settingsId}', [UserController::class,"updateSettings"]);
+
+Route::get('/ward', [WardController::class,"loadWard"]);
+Route::get('/new-ward', function () {
+    return view("portal.new-ward");
+    
+});
+Route::post('/add-ward', [WardController::class,"addWard"]);
+Route::get('/edit-ward/{WardId}', [WardController::class,"loadEditWard"]);
+Route::post('/update-ward/{WardId}', [WardController::class,"updateWard"]);

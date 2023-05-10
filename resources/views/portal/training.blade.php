@@ -6,8 +6,13 @@
 
 
     <h1>Training</h1>
+    
     <p>this is the training page</p>
+    @if (session('role') == 'admin' || session('role') == 'coach') 
     <a href="/new-training">Add new training</a>
+    @endif
+    
+
     <br>
     <table>
         <thead>
@@ -31,8 +36,11 @@
                     <td>{{$getTraining->time }} </td>
                     <td>{{$getTraining->day }} </td>
                     <td>{{$getTraining->squadDetails->name }} </td>
+                    @if (session('role') == 'admin' || session('role') == 'coach') 
                     <td><a href="/edit-training/{{$getTraining->id}}">Edit</a></td>
                     <td><a href="/delete-training/{{$getTraining->id}}" style="color:red">Delete</a></td>
+                @endif
+                    
                 </tr>
             @endforeach
             
