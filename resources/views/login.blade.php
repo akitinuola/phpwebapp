@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <a href="/" class="back-home">Back to Home</a>
     <div class="login">
 
         <div class="login-triangle"></div>
@@ -18,16 +19,16 @@
 
         <form action="{{ url('login-user') }}" method="post" class="login-container">
             @csrf
-                    @if (count($errors))
-                    @foreach ($errors->all() as $error)
-                        <div style="color: black;"> {{ $error }}</div>
-                    @endforeach
-                @endif
-            <p><input class="text email" type="email" name="email" placeholder="Email"
-                value="{{ old('email') }}" required></p>
+            @if (count($errors))
+                @foreach ($errors->all() as $error)
+                    <div style="color: black;"> {{ $error }}</div>
+                @endforeach
+            @endif
+            <p><input class="text email" type="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                    required></p>
             <p>
                 <input class="text email" type="password" name="password" placeholder="Password"
-                        value="{{ old('password') }}" required>
+                    value="{{ old('password') }}" required>
             </p>
             <p><input type="submit" value="Log in"></p>
             <p>Don't have an Account? <a href="register"> Sign up now!</a></p>
@@ -39,5 +40,5 @@
     </div>
 </body>
 
-                    
+
 </html>

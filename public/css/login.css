@@ -29,6 +29,13 @@ body {
   background-repeat: no-repeat;
 }
 
+.back-home {
+  /* background: black; */
+  color: white;
+  padding:10px 40px;
+  margin-top: 40px;
+}
+
 .login {
   width: 400px;
   margin: 16px auto;

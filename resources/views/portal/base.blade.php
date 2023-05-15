@@ -90,7 +90,7 @@
                     <i class="fas fa-fw fa-person-booth"></i>
                     <span>Gala</span></a>
             </li>
-            @if (session('role') == 'admin') 
+            @if (session('role') == 'parent') 
                 <hr class="sidebar-divider">
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('ward')}}">
